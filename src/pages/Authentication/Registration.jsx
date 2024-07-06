@@ -6,7 +6,7 @@ import { useState } from "react";
 import { imageUpload } from "../../utils";
 import { FaSpinner } from "react-icons/fa";
 const Registration = () => {
-    const { createUser, signInWithGoogle, updateUserProfile, user, loading } = useAuth();
+    const { createUser, signInWithGoogle, updateUserProfile, loading } = useAuth();
     const [imagePreview, setImagePreview] = useState()
     const [imageText, setImageText] = useState('Upload Image')
     const [isLoading, setIsLoading] = useState(false)
@@ -32,6 +32,7 @@ const Registration = () => {
                 toast.error(err?.message);
             })
     }
+    // google sing in 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(() => {
@@ -42,6 +43,7 @@ const Registration = () => {
                 toast.error(err?.message);
             })
     }
+    // image change
     const handleImageChange = image => {
         setImagePreview(URL.createObjectURL(image))
         setImageText(image.name)
